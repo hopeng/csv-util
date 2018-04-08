@@ -1,12 +1,11 @@
 package com.macquarie.twods;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by hopeng on 8/4/18.
  */
-@Component
+//@Component
 @ConfigurationProperties("props.test")
 public class PropsTest {
 

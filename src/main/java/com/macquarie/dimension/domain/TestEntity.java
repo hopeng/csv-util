@@ -20,8 +20,8 @@ public class TestEntity {
     private BigDecimal amount;
     private ZonedDateTime updatedBy;
     private LocalDate localDate;
-    private boolean enabled;
-    private boolean abcRouteUsAPrice;
+    private Boolean enabled;
+    private Boolean abcRouteUsAPrice;
 
     public String getId() {
         return id;
@@ -63,11 +63,11 @@ public class TestEntity {
         this.updatedBy = updatedBy;
     }
 
-    public boolean isEnabled() {
+    public Boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

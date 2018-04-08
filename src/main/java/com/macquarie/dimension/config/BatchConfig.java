@@ -10,6 +10,7 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.item.database.JpaPagingItemReader;
 import org.springframework.batch.item.file.FlatFileItemWriter;
+import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
 import org.springframework.batch.item.support.PassThroughItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +52,8 @@ public class BatchConfig extends DefaultBatchConfigurer {
         reader.setQueryString("from TestEntity");
 
         FlatFileItemWriter<Object> writer = new FlatFileItemWriter<>();
-        writer.setResource(new PathResource("batch.out"));
+        writer.setResource(new PathResource("batch-out.txt"));
+        writer.setLineAggregator(new PassThroughLineAggregator<>());
 
         return stepBuilderFactory.get("step1")
                 .chunk(100)

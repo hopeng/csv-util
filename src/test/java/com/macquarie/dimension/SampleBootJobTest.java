@@ -1,14 +1,11 @@
-package com.macquarie.another;
+package com.macquarie.dimension;
 
-import com.macquarie.dimension.config.BatchConfig;
 import com.macquarie.dimension.domain.TestEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,25 +17,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@Import({ BatchConfig.class})
-public class SampleBootJpaTest {
-    @TestConfiguration
-    static class TestConfig {
-        @Bean
-        public JobLauncherTestUtils jobLauncherTestUtils() {
-            return new JobLauncherTestUtils();
-        }
-    }
-
-    @Autowired
-    JobLauncherTestUtils jobLauncherTestUtils;
-
+@Import({ TestConfig.class})
+public class SampleBootJobTest {
 
     @Autowired
     private EntityManager entityManager;
 
     @Test
-    public void test() {
+    public void test() throws Exception {
         TestEntity entity = new TestEntity();
         entity.setId("1");
         entity.setAge(11);
@@ -51,6 +37,9 @@ public class SampleBootJpaTest {
         List<TestEntity> list = entityManager.createQuery("from TestEntity", TestEntity.class).getResultList();
         System.out.println(list);
         assertEquals(1, list.size());
+
+//        jobLauncherTestUtils.launchJob();
+        SpringApplication.run(DimensionEntry.class);
     }
 
 }
