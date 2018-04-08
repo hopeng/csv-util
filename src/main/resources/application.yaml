@@ -1,7 +1,14 @@
-spring:
+dimension:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username:
+    jdbcUrl: jdbc:postgresql://localhost:5432/postgres
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    url: jdbc:h2:mem:mydb
+    username: hopeng
     password:
+
+props.test:
+  name: james
+  description: lala
+  note: hahaha llahe
 
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
