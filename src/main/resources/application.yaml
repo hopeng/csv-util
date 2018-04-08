@@ -1,9 +1,13 @@
 dimension:
   datasource:
     jdbcUrl: jdbc:postgresql://localhost:5432/postgres
-#    url: jdbc:postgresql://localhost:5432/postgres
-#    url: jdbc:h2:mem:mydb
     username: hopeng
+    password:
+
+another:
+  datasource:
+    jdbcUrl: jdbc:h2:mem:mydb
+    username: sa
     password:
 
 props.test:
@@ -11,4 +15,7 @@ props.test:
   description: lala
   note: hahaha llahe
 
-spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
+spring:
+  jpa:
+    properties.hibernate.jdbc.lob.non_contextual_creation: true
+    show-sql: true

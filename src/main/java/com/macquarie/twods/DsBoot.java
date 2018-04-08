@@ -26,6 +26,9 @@ public class DsBoot implements CommandLineRunner {
     DataSource dimensionDataSource;
 
     @Autowired
+    DataSource anotherDataSource;
+
+    @Autowired
     PropsTest propsTest;
 
     @Override
@@ -33,5 +36,8 @@ public class DsBoot implements CommandLineRunner {
         List<Map<String, Object>> out = new JdbcTemplate(dimensionDataSource).queryForList("select * from test_entity");
         System.out.println("result=" + out);
         System.out.println(propsTest);
+
+        out = new JdbcTemplate(anotherDataSource).queryForList("select * from test_entity");
+        System.out.println("result=" + out);
     }
 }

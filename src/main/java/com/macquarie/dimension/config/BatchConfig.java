@@ -36,7 +36,7 @@ public class BatchConfig extends DefaultBatchConfigurer {
     private JobRepository jobRepository;
 
     @Autowired
-    private EntityManagerFactory entityManagerFactory;
+    private EntityManagerFactory dimensionEntityManagerFactory;
 
     @Override
     public void setDataSource(DataSource dataSource) {
@@ -47,7 +47,7 @@ public class BatchConfig extends DefaultBatchConfigurer {
     @Bean
     public Step step1() {
         JpaPagingItemReader reader = new JpaPagingItemReader();
-        reader.setEntityManagerFactory(entityManagerFactory);
+        reader.setEntityManagerFactory(dimensionEntityManagerFactory);
         reader.setQueryString("from TestEntity");
 
         FlatFileItemWriter<Object> writer = new FlatFileItemWriter<>();

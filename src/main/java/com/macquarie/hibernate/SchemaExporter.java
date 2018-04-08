@@ -4,8 +4,6 @@ import com.github.fluent.hibernate.cfg.scanner.EntityScanner;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.dialect.H2Dialect;
-import org.hibernate.dialect.PostgreSQL95Dialect;
-import org.hibernate.dialect.PostgresPlusDialect;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.schema.TargetType;
 
@@ -23,11 +21,12 @@ import static org.hibernate.cfg.AvailableSettings.PHYSICAL_NAMING_STRATEGY;
 public class SchemaExporter {
 
     public static void main(String[] args) {
-        exportDDL("out.ddl", "public", PostgreSQL95Dialect.class,
+        exportDDL("out", "public", H2Dialect.class,
                 "com.macquarie.dimension.domain");
     }
 
     private static void exportDDL(String outputFile, String defaultSchema, Class<?> dialectClass, String... packagesToScan) {
+        outputFile = outputFile + "-" + dialectClass.getSimpleName() + ".ddl";
         try {
             Files.deleteIfExists(Paths.get(outputFile));
         } catch (IOException e) {
