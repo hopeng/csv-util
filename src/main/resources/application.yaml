@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username:
+    password:
+
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true

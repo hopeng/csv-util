@@ -1,0 +1,15 @@
+node_modules/
+.idea/*
+!.idea/codeStyleSettings.xml
+!.idea/runConfigurations/
+*.iml
+/build/
+classes/
+/bin/
+*.log
+.classpath
+.gradle/
+.project
+.settings/
+~$*
+static/dist/
