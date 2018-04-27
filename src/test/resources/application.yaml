@@ -16,3 +16,4 @@ spring:
     properties.hibernate.jdbc.lob.non_contextual_creation: true
     properties.hibernate.physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     properties.hibernate.hbm2ddl.auto: create-drop
+#    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect

@@ -22,6 +22,7 @@ public class TestEntity {
     private LocalDate localDate;
     private Boolean enabled;
     private Boolean abcRouteUsAPrice;
+    private Currency currency;
 
     public String getId() {
         return id;
@@ -71,6 +72,14 @@ public class TestEntity {
         this.enabled = enabled;
     }
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
     @Override
     public String toString() {
         return "TestEntity{" +
@@ -82,6 +91,7 @@ public class TestEntity {
                 ", localDate=" + localDate +
                 ", enabled=" + enabled +
                 ", abcRouteUsAPrice=" + abcRouteUsAPrice +
+                ", currency=" + currency +
                 '}';
     }
 }

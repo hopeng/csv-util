@@ -1,5 +1,6 @@
 package com.macquarie.dimension;
 
+import com.macquarie.dimension.domain.Currency;
 import com.macquarie.dimension.domain.TestEntity;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class DataLoadConfig {
         entity.setId("1");
         entity.setAge(11);
         entity.setUpdatedBy(ZonedDateTime.now());
+        entity.setCurrency(Currency.AUD);
 
         entityManager.getTransaction().begin();
         entityManager.persist(entity);

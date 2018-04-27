@@ -11,7 +11,6 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.item.database.JpaPagingItemReader;
 import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
-import org.springframework.batch.item.support.PassThroughItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +38,9 @@ public class BatchConfig extends DefaultBatchConfigurer {
     @Autowired
     private EntityManagerFactory dimensionEntityManagerFactory;
 
+    @Autowired
+    MyItemProcessor myItemProcessor;
+
     @Override
     public void setDataSource(DataSource dataSource) {
         // override to do not set datasource even if a datasource exist.
@@ -58,15 +60,8 @@ public class BatchConfig extends DefaultBatchConfigurer {
         return stepBuilderFactory.get("step1")
                 .chunk(100)
                 .reader(reader)
-                .processor(new PassThroughItemProcessor<>())
+                .processor(myItemProcessor)
                 .writer(writer)
-//                .tasklet(new Tasklet() {
-//                    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-//                        System.out.println("I'm a SETP!!!!!!!!!!");
-//                        return null;
-//                    }
-//                }
-//                )
                 .build();
     }
 
@@ -77,4 +72,5 @@ public class BatchConfig extends DefaultBatchConfigurer {
                 .start(step1)
                 .build();
     }
+
 }
