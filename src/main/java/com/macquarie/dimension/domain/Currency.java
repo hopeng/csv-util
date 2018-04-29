@@ -12,11 +12,11 @@ public enum  Currency {
     EUR,
     GBP;
 
-    private String shortForm = name().toLowerCase();
+    public String description = name().toLowerCase();
 
     @Override
     public String toString() {
-        return shortForm;
+        return description;
     }
 
     @Converter(autoApply = true)

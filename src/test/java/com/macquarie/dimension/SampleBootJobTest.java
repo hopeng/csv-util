@@ -26,13 +26,13 @@ public class SampleBootJobTest {
     @Test
     public void test() throws Exception {
         TestEntity entity = new TestEntity();
-        entity.setId("1");
+//        entity.setId(1L);
         entity.setAge(11);
         entity.setUpdatedBy(ZonedDateTime.now());
         this.entityManager.persist(entity);
         entityManager.flush();
 
-        System.out.println(entityManager.find(TestEntity.class, "1"));
+        System.out.println(entityManager.find(TestEntity.class, 1L));
 
         List<TestEntity> list = entityManager.createQuery("from TestEntity", TestEntity.class).getResultList();
         System.out.println(list);

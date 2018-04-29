@@ -23,10 +23,14 @@ public class SampleBootJpaTest {
     @Test
     public void test() {
         TestEntity entity = new TestEntity();
-        entity.setId("1");
         entity.setAge(11);
         entity.setUpdatedBy(ZonedDateTime.now());
         this.entityManager.persist(entity);
+
+        TestEntity entity2 = new TestEntity();
+        entity2.setAge(22);
+        entity2.setUpdatedBy(ZonedDateTime.now());
+        this.entityManager.persist(entity2);
         entityManager.flush();
 
         System.out.println(entityManager.find(TestEntity.class, "1"));
@@ -35,5 +39,4 @@ public class SampleBootJpaTest {
         System.out.println(list);
         assertEquals(1, list.size());
     }
-
 }

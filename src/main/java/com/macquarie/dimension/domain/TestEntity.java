@@ -1,6 +1,7 @@
 package com.macquarie.dimension.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,7 +15,8 @@ import java.util.Date;
 public class TestEntity {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
     private Date createdBy;
     private Integer age;
     private BigDecimal amount;
@@ -24,11 +26,11 @@ public class TestEntity {
     private Boolean abcRouteUsAPrice;
     private Currency currency;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

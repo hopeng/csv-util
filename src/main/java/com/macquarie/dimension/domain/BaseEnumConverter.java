@@ -15,17 +15,19 @@ public abstract class BaseEnumConverter implements AttributeConverter<Enum, Stri
 
     @Override
     public String convertToDatabaseColumn(Enum attribute) {
-        return attribute.toString();
+        return attribute == null ? null : attribute.toString();
     }
 
     @Override
     public Enum convertToEntityAttribute(String dbData) {
-        for (Enum c : classType.getEnumConstants()) {
-            if (c.toString().equals(dbData)) {
-                return c;
+        if (dbData != null) {
+            for (Enum e : classType.getEnumConstants()) {
+                if (dbData.equals(e.toString())) {
+                    return e;
+                }
             }
+            System.err.println(dbData + " cannot convert to enum");
         }
-        System.err.println(dbData + " cannot convert to enum");
         return null;
     }
 }
